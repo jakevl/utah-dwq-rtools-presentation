@@ -157,10 +157,13 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 
 # Our general approach
 
-
+1. Reusable, generalizable ***<span style="color:#2e6da4">functions</span>*** with flexible inputs
+2. Use ***<span style="color:#2e6da4">arguments</span>*** to modify functions, instead of re-programming
+3. Link ***<span style="color:#2e6da4">functions in series</span>*** to perform analyses
+4. ***<span style="color:#2e6da4">Document</span>*** functions and analyses
+5. Use ***<span style="color:#2e6da4">interactive</span>*** figures and applications to enhance user understanding
 
 # Examples
-
 
 
 <style>
