@@ -54,12 +54,12 @@ A portable collection of R functions.
 
 ## R documentation 
 
-* Help files  
+- Help files
 ```{r, out.width='65%', fig.align="left", echo=F}
 knitr::include_graphics('images/assignAUs-help.PNG')
 ```
 
-* [Package manuals](https://github.com/ut-ir-tools/irTools/blob/master/irTools_0.0.0.9000.pdf){target="_blank"}  
+- [Package manuals](https://github.com/ut-ir-tools/irTools/blob/master/irTools_0.0.0.9000.pdf){target="_blank"}  
 
 
 
