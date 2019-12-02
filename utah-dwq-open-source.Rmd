@@ -42,7 +42,8 @@ knitr::include_graphics('images/title-logo.PNG')
 
 ## R
 R is an open source statistical program and coding language.  
-[r-project.org](https://www.r-project.org/){target="_blank"}  
+[r-project.org](https://www.r-project.org/){target="_blank"}
+
 <br>
 Robust user community of coders & problem solvers.  
 Fully customizable.  
