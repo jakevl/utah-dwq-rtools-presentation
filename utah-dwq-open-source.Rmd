@@ -23,6 +23,20 @@ knitr::include_graphics('images/title-logo.PNG')
 - Efficiency
 - Ownership
 
+# What do we use open source tools for?
+
+- Querying/downloading data  
+- Water quality assessments
+- Data visualization
+
+# Our general approach
+
+1. Reusable, generalizable ***<span style="color:#2e6da4">functions</span>*** with flexible inputs
+2. Use ***<span style="color:#2e6da4">arguments</span>*** to modify functions, instead of re-programming
+3. Link ***<span style="color:#2e6da4">functions in series</span>*** to perform analyses
+4. ***<span style="color:#2e6da4">Document</span>*** functions and analyses
+5. Use ***<span style="color:#2e6da4">interactive</span>*** figures and applications to enhance user understanding
+
 
 # What platforms do we use?
 
@@ -37,8 +51,8 @@ Fully customizable.
 > Everything that exists is an object.  
 > Everything that happens is a function call.  
 > --- John Chambers  
-<br>
 
+## R
 **Functions & packages**  
 *Function*  
 A block of code that performs a particular task or set of tasks. A function has a name, **arguments**, a body (code), and a return value.  
@@ -62,7 +76,6 @@ knitr::include_graphics('images/assignAUs-help.PNG')
 - [Package manuals](https://github.com/ut-ir-tools/irTools/blob/master/irTools_0.0.0.9000.pdf){target="_blank"}  
 
 
-
 ## Markdown
 Text formatting syntax that allows conversion of plain text to rich text HTML, PDF, and other document types including tables, figures, and source code.
 
@@ -76,6 +89,7 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 Collaborative code writing, versioning, & sharing platform.  
 Individuals, organizations, teams, and repositories.  
 
+## GitHub
 **DWQ GitHub organization**  
 A location for DWQ staff to store, collaborate, and share repositories.  
 [github.com/utah-dwq](https://github.com/utah-dwq){target="_blank"}  
@@ -87,12 +101,18 @@ DWQ has two packages in current development. These can be viewed and installed v
 * [irTools](https://github.com/utah-dwq/irTools){target="_blank"}  
 <br>
 
+## GitHub
 **Installing packages from GitHub**  
 ```{r, eval=F}
 install.packages('devtools')
-devtools::install_github('utah-dwq/irTools')
-library(irTools)
-asmntDashboard()
+devtools::install_github('utah-dwq/wqTools')
+library(wqTools)
+```
+
+## Data portals & web services
+**ECHO** 
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/echo.png')
 ```
 
 ## Data portals & web services
@@ -101,19 +121,15 @@ asmntDashboard()
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/wqp.png')
 ```
-<br>
-**ECHO** 
-```{r, echo=F, fig.align="center"}
-knitr::include_graphics('images/echo.png')
-```
-<br>
+
+## Data portals & web services
 **Web service capabilities**
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/wqp_web_services.png')
 ```
-<br>
+
+## Data portals & web services
 ```{r, eval=F}
-library(wqTools)
 two_site_nr=readWQP(type="narrowresult",
 			        siteid=c("UTAHDWQ_WQX-4900440","UTAHDWQ_WQX-4900470"), 
 					start_date="01/01/2016", end_date="12/31/2018")
@@ -121,10 +137,9 @@ two_site_nr=readWQP(type="narrowresult",
 utah_lake_nr=readWQP(type="narrowresult",
    					 auid=c('UT-L-16020201-004_01', 'UT-L-16020201-004_02'),
    					 start_date="01/01/2016", end_date="12/31/2018",
-   					 siteType=c("Lake, Reservoir, Impoundment","Stream"),
-   					 print=F)
+   					 siteType=c("Lake, Reservoir, Impoundment","Stream"))
 ```
-<br>
+
 ```{r, echo=F, cache=T}
 library(leaflet)
 ul_poly=subset(wqTools::au_poly, ASSESS_ID %in% c('UT-L-16020201-004_01', 'UT-L-16020201-004_02'))
@@ -138,7 +153,7 @@ map3=wqTools::buildMap(plot_polys=F) %>%
 	leaflet.extras::removeSearchFeatures()
 htmlwidgets::saveWidget(map3, file=paste0(getwd(),'/figures/map3.html'))
 ```
-<iframe src="figures/map3.html" style="height:450px;width:800px"></iframe>
+<iframe src="figures/map3.html" style="height:300px;width:400px"></iframe>
 
 
 ## R-Shiny
@@ -148,22 +163,20 @@ Shiny is an R package for building interactive web applications to visualize and
 knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 ```
 
-
-# What do we use open source tools for?
-
-- Querying/downloading data  
-- Water quality assessments
-- Data visualization
-
-# Our general approach
-
-1. Reusable, generalizable ***<span style="color:#2e6da4">functions</span>*** with flexible inputs
-2. Use ***<span style="color:#2e6da4">arguments</span>*** to modify functions, instead of re-programming
-3. Link ***<span style="color:#2e6da4">functions in series</span>*** to perform analyses
-4. ***<span style="color:#2e6da4">Document</span>*** functions and analyses
-5. Use ***<span style="color:#2e6da4">interactive</span>*** figures and applications to enhance user understanding
-
 # Examples
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <style>
