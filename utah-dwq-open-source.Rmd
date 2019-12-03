@@ -55,17 +55,15 @@ Fully customizable.
 
 ## R
 **Functions & packages**  
-*Function*  
+
+- Function:  
 A block of code that performs a particular task or set of tasks. A function has a name, **arguments**, a body (code), and a return value.  
-<br>
 
-*Argument*  
+- Argument:  
 Change-able inputs to a function.  
-<br>
 
-*Package*  
+- Package:  
 A portable collection of R functions.  
-<br>
 
 ## R documentation 
 
@@ -166,16 +164,42 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 
 # Examples
 
+## Salinity in Great Salt Lake
+An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
+<iframe src="figures/gsl_sal_ts.html" style="height:400px;width:900px"></iframe>  
+
+## Utah's Lake Dashboard
+Interactively visualize lake profile & trophic indicator data.  
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/lakedashboard/){target="_blank"}
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/lake-profs.png')
+```
+[Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
+
+## Utah Lake Data Explorer
+Analyze and visualize water quality data in Utah Lake.
+
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/UtahLakeDataExplorer/){target="_blank"}
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/utah-lake.png')
+```
+
+[Source code](https://github.com/utah-dwq/UtahLakeDataExplorer){target="_blank"}
+
+## Utah's Water Quality Data Dashboard
 
 
+## E. coli data visualization
+https://udwq.shinyapps.io/ecoliDataExplorer/
 
 
-
-
-
-
-
-
+# Questions
+<h3>jvander@utah.gov</h3>
+<h3>ehinman@utah.gov</h3>
+<br>
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/title-logo.PNG')
+```
 
 
 
