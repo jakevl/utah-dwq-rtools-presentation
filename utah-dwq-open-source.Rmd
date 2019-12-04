@@ -184,6 +184,14 @@ knitr::include_graphics('images/lake-profs.png')
 ```
 [Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
 
+## Utah's Water Quality Data Dashboard
+Analyze, visualize, and write reports of water quality data in Utah waterbodies.
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/wqDD.png')
+```
+[Source code](https://github.com/utah-dwq/wqTools/tree/master/inst/wqDD){target="_blank"}
+
+
 ## Utah Lake Data Explorer
 Analyze and visualize water quality data in Utah Lake.
 
@@ -193,9 +201,6 @@ knitr::include_graphics('images/utah-lake.png')
 ```
 
 [Source code](https://github.com/utah-dwq/UtahLakeDataExplorer){target="_blank"}
-
-## Utah's Water Quality Data Dashboard
-
 
 ## E. coli data visualization
 [View on the DWQ Shiny apps server](https://udwq.shinyapps.io/ecoliDataExplorer/)
