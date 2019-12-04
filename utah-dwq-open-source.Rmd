@@ -13,9 +13,7 @@ output:
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/title-logo.PNG')
 ```
-
-# To view slides:
-<h2>**[bookdown.org/jakevl/udwq-open-source](https://bookdown.org/jakevl/utah-dwq-open-source/){target="_blank"}**</h2>
+<br>
 
 # Why use open source?
 
@@ -51,10 +49,6 @@ Robust user community of coders & problem solvers.
 Fully customizable.  
 <br>
 
-> Everything that exists is an object.  
-> Everything that happens is a function call.  
-> --- John Chambers  
-
 ## R
 **Functions & packages**  
 
@@ -86,7 +80,7 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 - Websites 
 
 ## Markdown - Bookdown
-Compile documents into chapters & books - document complex analyses & generate tool user guides.   
+Compile documents into chapters & books. Document complex analyses & generate tool user guides.   
 
 *Example:* [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/)
 ```{r, echo=F, fig.align="center"}
@@ -110,19 +104,6 @@ DWQ has two packages in current development. These can be viewed and installed v
 * [irTools](https://github.com/utah-dwq/irTools){target="_blank"}  
 <br>
 
-## GitHub
-**Installing packages from GitHub**  
-```{r, eval=F}
-install.packages('devtools')
-devtools::install_github('utah-dwq/wqTools')
-library(wqTools)
-```
-
-## Data portals & web services
-**ECHO** 
-```{r, echo=F, fig.align="center"}
-knitr::include_graphics('images/echo.png')
-```
 
 ## Data portals & web services
 **Water quality data portal**  
@@ -189,8 +170,10 @@ knitr::include_graphics('images/lake-profs.png')
 [Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
 
 ## Utah's Water Quality Data Dashboard
-Analyze, visualize, and write reports of water quality data in Utah waterbodies.
-```{r, echo=F, fig.align="center"}
+```{r, eval=F}
+wqTools::wqDD()
+```
+```{r, echo=F, fig.align="center", out.width='600px'}
 knitr::include_graphics('images/wqDD.png')
 ```
 [Source code](https://github.com/utah-dwq/wqTools/tree/master/inst/wqDD){target="_blank"}
@@ -236,8 +219,8 @@ knitr::include_graphics('images/ecoli_ldc_plot.png')
 # Questions
 <h3>jvander@utah.gov</h3>
 <h3>ehinman@utah.gov</h3>
-<h4>**Slides:**</h4>
-<h4>**[bookdown.org/jakevl/udwq-open-source](https://bookdown.org/jakevl/utah-dwq-open-source/){target="_blank"}**</h4>
+**Slides:** [bookdown.org/jakevl/udwq-open-source](https://bookdown.org/jakevl/utah-dwq-open-source/){target="_blank"}  
+**Source code:** [github.com/jakevl/utah-dwq-open-source](https://github.com/jakevl/utah-dwq-open-source){target="_blank"}
 
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/title-logo.PNG')
