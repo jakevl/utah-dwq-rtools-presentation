@@ -83,6 +83,14 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 - Presentations
 - Websites 
 
+## Markdown - Bookdown
+Tool for walking new R users through process of loading and running packages. 
+
+*Example:* [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/)
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/bookdown_assessment.PNG')
+```
+
 
 ## GitHub
 Collaborative code writing, versioning, & sharing platform.  
@@ -190,7 +198,30 @@ knitr::include_graphics('images/utah-lake.png')
 
 
 ## E. coli data visualization
-https://udwq.shinyapps.io/ecoliDataExplorer/
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/ecoliDataExplorer/)
+
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_upload.png')
+```
+[Source code](https://github.com/utah-dwq/tmdlTools)
+
+## TMDL development
+*Timeseries*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_timeseries_plot.png')
+```
+
+## TMDL development
+*Monthly trends*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_monthly_plot.png')
+```
+
+## TMDL development
+*Load duration curves*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_ldc_plot.png')
+```
 
 
 # Questions
