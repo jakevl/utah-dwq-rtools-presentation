@@ -80,13 +80,10 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 - Websites 
 
 ## Markdown - Bookdown
-Compile documents into chapters & books. Document complex analyses & generate tool user guides.   
+Compile documents into books. Document complex processes & user build guides.   
 
-*Example:* [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/)
-```{r, echo=F, fig.align="center"}
-knitr::include_graphics('images/bookdown_assessment.PNG')
-```
-
+**Example:** [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/){target="_blank"}
+<iframe src="https://bookdown.org/jakevl/IR-R-tools-guide/" style="height:400px;width:1000px"></iframe>  
 
 ## GitHub
 Collaborative code writing, versioning, & sharing platform.  
@@ -156,6 +153,11 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 ```
 
 # Examples
+
+## Querying & processing data
+<iframe src="https://bookdown.org/jakevl/ul_data_query/" style="height:500px;width:1000px"></iframe>  
+[Full page](https://bookdown.org/jakevl/ul_data_query/){target="_blank"}
+
 
 ## Salinity in Great Salt Lake
 An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
