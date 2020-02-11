@@ -1,4 +1,5 @@
 ---
+title: "Utah DWQ open source"
 output:
   revealjs::revealjs_presentation:
     transition: none
@@ -85,22 +86,6 @@ Compile documents into books. Document complex processes & user build guides.
 **Example:** [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/){target="_blank"}
 <iframe src="https://bookdown.org/jakevl/IR-R-tools-guide/" style="height:400px;width:1000px"></iframe>  
 
-## GitHub
-Collaborative code writing, versioning, & sharing platform.  
-Individuals, organizations, teams, and repositories.  
-
-## GitHub
-**DWQ GitHub organization**  
-A location for DWQ staff to store, collaborate, and share repositories.  
-[github.com/utah-dwq](https://github.com/utah-dwq){target="_blank"}  
-
-**DWQ R packages**  
-DWQ has two packages in current development. These can be viewed and installed via GitHub.  
-
-* [wqTools](https://github.com/utah-dwq/wqTools){target="_blank"}  
-* [irTools](https://github.com/utah-dwq/irTools){target="_blank"}  
-<br>
-
 
 ## Data portals & web services
 **Water quality data portal**  
@@ -143,6 +128,22 @@ map3=wqTools::buildMap(sites=sites, plot_polys=F) %>%
 htmlwidgets::saveWidget(map3, file=paste0(getwd(),'/figures/map3.html'))
 ```
 <iframe src="figures/map3.html" style="height:300px;width:400px"></iframe>
+
+## GitHub
+Collaborative code writing, versioning, & sharing platform.  
+Individuals, organizations, teams, and repositories.  
+
+## GitHub
+**DWQ GitHub organization**  
+A location for DWQ staff to store, collaborate, and share repositories.  
+[github.com/utah-dwq](https://github.com/utah-dwq){target="_blank"}  
+
+**DWQ R packages**  
+DWQ has two packages in current development. These can be viewed and installed via GitHub.  
+
+* [wqTools](https://github.com/utah-dwq/wqTools){target="_blank"}  
+* [irTools](https://github.com/utah-dwq/irTools){target="_blank"}  
+<br>
 
 
 ## R-Shiny
