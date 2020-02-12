@@ -195,6 +195,10 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
 <iframe src="figures/gsl_sal_ts.html" style="height:400px;width:900px"></iframe>  
 
+## GSL Salinity Dashboard
+<iframe src="figures/gsldb.html" style="height:600px;width:900px"></iframe>
+
+
 ## Utah's Lake Dashboard
 Interactively visualize lake profile & trophic indicator data.  
 [View on the DWQ Shiny apps server](https://udwq.shinyapps.io/lakedashboard/){target="_blank"}
@@ -203,7 +207,7 @@ knitr::include_graphics('images/lake-profs.png')
 ```
 [Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
 
-## Utah's Water Quality Data Dashboard
+## Utah Water Quality Data Viewer
 ```{r, eval=F}
 wqTools::wqDD()
 ```
