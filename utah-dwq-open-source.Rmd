@@ -12,15 +12,22 @@ output:
 <h4>Elise Hinman (ehinman@utah.gov)</h4>  
 
 ```{r, echo=F, fig.align="center"}
+#setwd("C:\\Users\\jvander\\Documents\\R\\utah-dwq-open-source")
+#render("utah-dwq-open-source.Rmd")
 knitr::include_graphics('images/title-logo.PNG')
+library(wqTools)
 ```
 <br>
+
+# What is open source?
+Source code made publicly available for use and modification.  
 
 # Why use open source?
 
 - Transparency
 - Repeatability
 - Efficiency
+- Flexibility
 - Ownership
 
 # What do we use open source tools for?
@@ -78,6 +85,7 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 - Documents (package rmarkdown)
 - Chapters & books (package bookdown)
 - Presentations
+- Dashboards
 - Websites 
 
 ## Markdown - Bookdown
@@ -93,6 +101,29 @@ Compile documents into books. Document complex processes & user build guides.
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/wqp.png')
 ```
+
+## Data portals & web services
+**ECHO** 
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/echo.png')
+```
+
+## Data portals & web services
+**ECHO** 
+```{r}
+UT0021717_tp_001=readECHO_ec(p_id="UT0021717", 
+	parameter_code="00665", outfall="001", print=F)
+UT0021717_tp_001_effluent=subset(UT0021717_tp_001, 
+	monitoring_location_desc=="Effluent Gross")
+```
+
+```{r, echo=F}
+library(kableExtra)
+tab=UT0021717_tp_001_effluent[,c("npdes_id","monitoring_period_end_date","parameter_desc","dmr_value_standard_units","limit_unit_desc","statistical_base_short_desc")]
+tab=tab[order(as.Date(tab$monitoring_period_end_date, format='%m/%d/%Y'), decreasing = T),]
+knitr::kable(head(tab), col.names=c('Permit ID', 'Date', 'Parameter', 'Result', 'Units', 'Stat'), row.names=F, format='html') %>% kable_styling(font_size = 22)
+```
+
 
 ## Data portals & web services
 **Web service capabilities**
