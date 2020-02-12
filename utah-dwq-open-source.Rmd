@@ -7,9 +7,9 @@ output:
 ---
 
 # Open source tools at Utah DWQ
-
-<h4>Jake Vander Laan (jvander@utah.gov)</h4>  
-<h4>Elise Hinman (ehinman@utah.gov)</h4>  
+<h2>(AKA Our IR R tools)</h2>  
+<h6>Jake Vander Laan (jvander@utah.gov)</h6>  
+<h6>Elise Hinman (ehinman@utah.gov)</h6>  
 
 ```{r, echo=F, fig.align="center"}
 #setwd("C:\\Users\\jvander\\Documents\\R\\utah-dwq-open-source")
