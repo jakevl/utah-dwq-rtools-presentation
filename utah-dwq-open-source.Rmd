@@ -227,7 +227,7 @@ knitr::include_graphics('images/utah-lake.png')
 
 [Source code](https://github.com/utah-dwq/UtahLakeDataExplorer){target="_blank"}
 
-## E. coli data visualization
+## TMDL development
 [View on the DWQ Shiny apps server](https://udwq.shinyapps.io/ecoliDataExplorer/){target="_blank"}
 
 ```{r, echo=F, fig.align="center"}
@@ -251,6 +251,12 @@ knitr::include_graphics('images/ecoli_monthly_plot.png')
 *Load duration curves*
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/ecoli_ldc_plot.png')
+```
+
+## TMDL development
+*Fremont River E.coli TMDL*
+```{r, echo=F, out.width = "600px", fig.align="center"}
+knitr::include_graphics('images/tmdl_cover.png')
 ```
 
 
