@@ -103,29 +103,6 @@ knitr::include_graphics('images/wqp.png')
 ```
 
 ## Data portals & web services
-**ECHO** 
-```{r, echo=F, fig.align="center"}
-knitr::include_graphics('images/echo.png')
-```
-
-## Data portals & web services
-**ECHO** 
-```{r}
-UT0021717_tp_001=readECHO_ec(p_id="UT0021717", 
-	parameter_code="00665", outfall="001", print=F)
-UT0021717_tp_001_effluent=subset(UT0021717_tp_001, 
-	monitoring_location_desc=="Effluent Gross")
-```
-
-```{r, echo=F}
-library(kableExtra)
-tab=UT0021717_tp_001_effluent[,c("npdes_id","monitoring_period_end_date","parameter_desc","dmr_value_standard_units","limit_unit_desc","statistical_base_short_desc")]
-tab=tab[order(as.Date(tab$monitoring_period_end_date, format='%m/%d/%Y'), decreasing = T),]
-knitr::kable(head(tab), col.names=c('Permit ID', 'Date', 'Parameter', 'Result', 'Units', 'Stat'), row.names=F, format='html') %>% kable_styling(font_size = 22)
-```
-
-
-## Data portals & web services
 **Web service capabilities**
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/wqp_web_services.png')
@@ -159,6 +136,28 @@ map3=wqTools::buildMap(sites=sites, plot_polys=F) %>%
 htmlwidgets::saveWidget(map3, file=paste0(getwd(),'/figures/map3.html'))
 ```
 <iframe src="figures/map3.html" style="height:300px;width:400px"></iframe>
+
+## Data portals & web services
+**ECHO** 
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/echo.png')
+```
+
+## Data portals & web services
+**ECHO** 
+```{r}
+UT0021717_tp_001=readECHO_ec(p_id="UT0021717", 
+	parameter_code="00665", outfall="001", print=F)
+UT0021717_tp_001_effluent=subset(UT0021717_tp_001, 
+	monitoring_location_desc=="Effluent Gross")
+```
+
+```{r, echo=F}
+library(kableExtra)
+tab=UT0021717_tp_001_effluent[,c("npdes_id","monitoring_period_end_date","parameter_desc","dmr_value_standard_units","limit_unit_desc","statistical_base_short_desc")]
+tab=tab[order(as.Date(tab$monitoring_period_end_date, format='%m/%d/%Y'), decreasing = T),]
+knitr::kable(head(tab), col.names=c('Permit ID', 'Date', 'Parameter', 'Result', 'Units', 'Stat'), row.names=F, format='html') %>% kable_styling(font_size = 22)
+```
 
 ## GitHub
 Collaborative code writing, versioning, & sharing platform.  
@@ -228,6 +227,12 @@ knitr::include_graphics('images/utah-lake.png')
 [Source code](https://github.com/utah-dwq/UtahLakeDataExplorer){target="_blank"}
 
 ## TMDL development
+*Fremont River E.coli TMDL*
+```{r, echo=F, out.width = "600px", fig.align="center"}
+knitr::include_graphics('images/tmdl_cover.png')
+```
+
+## TMDL development
 [View on the DWQ Shiny apps server](https://udwq.shinyapps.io/ecoliDataExplorer/){target="_blank"}
 
 ```{r, echo=F, fig.align="center"}
@@ -252,13 +257,6 @@ knitr::include_graphics('images/ecoli_monthly_plot.png')
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/ecoli_ldc_plot.png')
 ```
-
-## TMDL development
-*Fremont River E.coli TMDL*
-```{r, echo=F, out.width = "600px", fig.align="center"}
-knitr::include_graphics('images/tmdl_cover.png')
-```
-
 
 # Questions
 <h3>jvander@utah.gov</h3>
