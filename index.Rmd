@@ -1,5 +1,4 @@
 ---
-title: "Utah DWQ open source"
 output:
   revealjs::revealjs_presentation:
     transition: none
@@ -7,9 +6,8 @@ output:
 ---
 
 # Open source tools at Utah DWQ
-<h2>(AKA Our IR R tools)</h2>  
-<h6>Jake Vander Laan (jvander@utah.gov)</h6>  
-<h6>Elise Hinman (ehinman@utah.gov)</h6>  
+<h5>Jake Vander Laan (jvander@utah.gov)</h5>  
+<h5>Elise Hinman (ehinman@utah.gov)</h5>  
 
 ```{r, echo=F, fig.align="center"}
 #setwd("C:\\Users\\jvander\\Documents\\R\\utah-dwq-open-source")
@@ -17,6 +15,9 @@ output:
 knitr::include_graphics('images/title-logo.PNG')
 library(wqTools)
 ```
+
+<h5> Use arrow keys or navigator in bottom right to navigate slides. Press escape for presentation overview.</h5>  
+
 <br>
 
 # What is open source?
