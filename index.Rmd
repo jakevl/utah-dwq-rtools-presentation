@@ -1,0 +1,301 @@
+---
+title: "Utah DWQ open source"
+output:
+  revealjs::revealjs_presentation:
+    transition: none
+    background_transition: none
+---
+
+# Open source tools at Utah DWQ
+<h2>(AKA Our IR R tools)</h2>  
+<h6>Jake Vander Laan (jvander@utah.gov)</h6>  
+<h6>Elise Hinman (ehinman@utah.gov)</h6>  
+
+```{r, echo=F, fig.align="center"}
+#setwd("C:\\Users\\jvander\\Documents\\R\\utah-dwq-open-source")
+#render("utah-dwq-open-source.Rmd")
+knitr::include_graphics('images/title-logo.PNG')
+library(wqTools)
+```
+<br>
+
+# What is open source?
+Source code made publicly available for use and modification.  
+
+# Why use open source?
+
+- Transparency
+- Repeatability
+- Efficiency
+- Flexibility
+- Ownership
+
+# What do we use open source tools for?
+
+- Querying/downloading data  
+- Water quality assessments
+- Data visualization
+- Documenting & communicating analyses
+
+# Our general approach
+
+1. Reusable, generalizable ***<span style="color:#2e6da4">functions</span>*** with flexible inputs
+2. Use ***<span style="color:#2e6da4">arguments</span>*** to modify functions, instead of re-programming
+3. Link ***<span style="color:#2e6da4">functions in series</span>*** to perform analyses
+4. ***<span style="color:#2e6da4">Document</span>*** functions and analyses
+5. Use ***<span style="color:#2e6da4">interactive</span>*** figures and applications to enhance user understanding
+
+
+# What platforms do we use?
+
+## R
+R is an open source statistical program and coding language.  
+[r-project.org](https://www.r-project.org/){target="_blank"}
+
+<br>
+Robust user community of coders & problem solvers.  
+Fully customizable.  
+<br>
+
+## R
+**Functions & packages**  
+
+- Function:  
+A block of code that performs a particular task or set of tasks. A function has a name, **arguments**, a body (code), and a return value.  
+
+- Argument:  
+Change-able inputs to a function.  
+
+- Package:  
+A portable collection of R functions.  
+
+## R documentation 
+
+- Help files
+```{r, out.width='65%', fig.align="left", echo=F}
+knitr::include_graphics('images/assignAUs-help.PNG')
+```
+
+- [Package manuals](https://github.com/ut-ir-tools/irTools/blob/master/irTools_0.0.0.9000.pdf){target="_blank"}  
+
+
+## Markdown
+Text formatting syntax that allows conversion of plain text to rich text HTML, PDF, and other document types including ***<span style="color:#2e6da4">tables, figures, and code</span>***.
+
+- Documents (package rmarkdown)
+- Chapters & books (package bookdown)
+- Presentations
+- Dashboards
+- Websites 
+
+## Markdown - Bookdown
+Compile documents into books. Document complex processes & user build guides.   
+
+**Example:** [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/){target="_blank"}
+<iframe src="https://bookdown.org/jakevl/IR-R-tools-guide/" style="height:400px;width:1000px"></iframe>  
+
+
+## Data portals & web services
+**Water quality data portal**  
+[waterqualitydata.us/portal](https://www.waterqualitydata.us/portal/){target="_blank"}  
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/wqp.png')
+```
+
+## Data portals & web services
+**Web service capabilities**
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/wqp_web_services.png')
+```
+
+## Data portals & web services
+```{r, eval=F}
+two_site_nr=readWQP(type="narrowresult",
+			        siteid=c("UTAHDWQ_WQX-4900440","UTAHDWQ_WQX-4900470"), 
+					start_date="01/01/2016", end_date="12/31/2018")
+
+utah_lake_nr=readWQP(type="narrowresult",
+   					 auid=c('UT-L-16020201-004_01', 'UT-L-16020201-004_02'),
+   					 start_date="01/01/2016", end_date="12/31/2018",
+   					 siteType="Lake, Reservoir, Impoundment")
+```
+
+```{r, echo=F, cache=T, results='hide'}
+library(leaflet)
+ul_poly=subset(wqTools::au_poly, ASSESS_ID %in% c('UT-L-16020201-004_01', 'UT-L-16020201-004_02'))
+bbox=sf::st_bbox(ul_poly)
+sites=readWQP(type='sites', auid=c('UT-L-16020201-004_01', 'UT-L-16020201-004_02'), siteType="Lake, Reservoir, Impoundment")
+map3=wqTools::buildMap(sites=sites, plot_polys=F) %>% 
+	hideGroup('Sites') %>%
+	addPolygons(data=ul_poly, popup=~ASSESS_ID) %>% 
+	addLayersControl(
+		position ="topleft",
+		baseGroups = c("Topo","Satellite"), overlayGroups='Sites') %>%
+	fitBounds(bbox[[1]], bbox[[2]], bbox[[3]], bbox[[4]]) %>%
+	leaflet.extras::removeSearchFeatures()
+htmlwidgets::saveWidget(map3, file=paste0(getwd(),'/figures/map3.html'))
+```
+<iframe src="figures/map3.html" style="height:300px;width:400px"></iframe>
+
+## Data portals & web services
+**ECHO** 
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/echo.png')
+```
+
+## Data portals & web services
+**ECHO** 
+```{r}
+UT0021717_tp_001=readECHO_ec(p_id="UT0021717", 
+	parameter_code="00665", outfall="001", print=F)
+UT0021717_tp_001_effluent=subset(UT0021717_tp_001, 
+	monitoring_location_desc=="Effluent Gross")
+```
+
+```{r, echo=F}
+library(kableExtra)
+tab=UT0021717_tp_001_effluent[,c("npdes_id","monitoring_period_end_date","parameter_desc","dmr_value_standard_units","limit_unit_desc","statistical_base_short_desc")]
+tab=tab[order(as.Date(tab$monitoring_period_end_date, format='%m/%d/%Y'), decreasing = T),]
+knitr::kable(head(tab), col.names=c('Permit ID', 'Date', 'Parameter', 'Result', 'Units', 'Stat'), row.names=F, format='html') %>% kable_styling(font_size = 22)
+```
+
+## GitHub
+Collaborative code writing, versioning, & sharing platform.  
+Individuals, organizations, teams, and repositories.  
+
+## GitHub
+**DWQ GitHub organization**  
+A location for DWQ staff to store, collaborate, and share repositories.  
+[github.com/utah-dwq](https://github.com/utah-dwq){target="_blank"}  
+
+**DWQ R packages**  
+DWQ has two packages in current development. These can be viewed and installed via GitHub.  
+
+* [wqTools](https://github.com/utah-dwq/wqTools){target="_blank"}  
+* [irTools](https://github.com/utah-dwq/irTools){target="_blank"}  
+<br>
+
+
+## R-Shiny
+Shiny is an R package for building interactive web applications to visualize and analyze data and communicate analytical results.  
+<br>
+```{r, echo=F}
+knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
+```
+
+# Examples
+
+## Querying & processing data
+<iframe src="https://bookdown.org/jakevl/ul_data_query/" style="height:500px;width:1000px"></iframe>  
+[Full page](https://bookdown.org/jakevl/ul_data_query/){target="_blank"}
+
+
+## Salinity in Great Salt Lake
+An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
+<iframe src="figures/gsl_sal_ts.html" style="height:400px;width:900px"></iframe>  
+
+## GSL Salinity Dashboard
+<iframe src="figures/gsldb.html" style="height:600px;width:900px"></iframe>
+
+
+## Utah's Lake Dashboard
+Interactively visualize lake profile & trophic indicator data.  
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/lakedashboard/){target="_blank"}
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/lake-profs.png')
+```
+[Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
+
+## Utah Water Quality Data Viewer
+```{r, eval=F}
+wqTools::wqDD()
+```
+```{r, echo=F, fig.align="center", out.width='600px'}
+knitr::include_graphics('images/wqDD.png')
+```
+[Source code](https://github.com/utah-dwq/wqTools/tree/master/inst/wqDD){target="_blank"}
+
+
+## Utah Lake Data Explorer
+Analyze and visualize water quality data in Utah Lake.
+
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/UtahLakeDataExplorer/){target="_blank"}
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/utah-lake.png')
+```
+
+[Source code](https://github.com/utah-dwq/UtahLakeDataExplorer){target="_blank"}
+
+## TMDL development
+*Fremont River E.coli TMDL*
+```{r, echo=F, out.width = "600px", fig.align="center"}
+knitr::include_graphics('images/tmdl_cover.png')
+```
+
+## TMDL development
+[View on the DWQ Shiny apps server](https://udwq.shinyapps.io/ecoliDataExplorer/){target="_blank"}
+
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_upload.png')
+```
+[Source code](https://github.com/utah-dwq/tmdlTools){target="_blank"}
+
+## TMDL development
+*Timeseries*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_timeseries_plot.png')
+```
+
+## TMDL development
+*Monthly trends*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_monthly_plot.png')
+```
+
+## TMDL development
+*Load duration curves*
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/ecoli_ldc_plot.png')
+```
+
+# Questions
+<h3>jvander@utah.gov</h3>
+<h3>ehinman@utah.gov</h3>
+**Slides:** [bookdown.org/jakevl/udwq-open-source](https://bookdown.org/jakevl/utah-dwq-open-source/){target="_blank"}  
+**Source code:** [github.com/jakevl/utah-dwq-open-source](https://github.com/jakevl/utah-dwq-open-source){target="_blank"}
+
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/title-logo.PNG')
+```
+
+
+
+
+<style>
+.reveal p {
+  text-align: left;
+}
+.reveal ul {
+  display: block;
+}
+.reveal ol {
+  display: block;
+}  
+.reveal section img { background:none; border:none; box-shadow:none; }
+.slide {
+    height: 700px;
+    overflow-y: auto !important;
+}
+body:after {
+content: url(images/dwq_logo_small.png);
+position: fixed;
+bottom: 3.5em;
+left: 3.5em;
+}
+</style>
+
+
+
+
+
+
