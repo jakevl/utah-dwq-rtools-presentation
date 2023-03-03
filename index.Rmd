@@ -5,6 +5,7 @@ output:
     background_transition: none
 ---
 
+
 # R tools at Utah DWQ
 <h5>Jake Vander Laan (jvander@utah.gov)</h5>  
 
@@ -88,7 +89,7 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 Compile documents into books. Document complex processes & user build guides.   
 
 **Example:** [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/){target="_blank"}
-<iframe src="https://bookdown.org/jakevl/IR-R-tools-guide/" style="height:400px;width:1000px"></iframe>  
+<iframe src="https://bookdown.org/jakevl/IR-R-tools-guide/" style="height:400px;width:1000px" data-external="1"></iframe>  
 
 
 ## Data portals & web services
@@ -131,7 +132,7 @@ map3=wqTools::buildMap(sites=sites, plot_polys=F) %>%
 	leaflet.extras::removeSearchFeatures()
 htmlwidgets::saveWidget(map3, file=paste0(getwd(),'/figures/map3.html'))
 ```
-<iframe src="figures/map3.html" style="height:300px;width:400px"></iframe>
+<iframe src="figures/map3.html" style="height:300px;width:400px" data-external="1"></iframe>
 
 ## Data portals & web services
 **ECHO** 
@@ -182,17 +183,15 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 # Examples
 
 ## Querying & processing data
-<iframe src="https://bookdown.org/jakevl/ul_data_query/" style="height:500px;width:1000px"></iframe>  
+<iframe src="https://bookdown.org/jakevl/ul_data_query/" style="height:500px;width:1000px" data-external="1"></iframe>  
 [Full page](https://bookdown.org/jakevl/ul_data_query/){target="_blank"}
-
-## Integrated Report
 
 ## Salinity in Great Salt Lake
 An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
-<iframe src="figures/gsl_sal_ts.html" style="height:400px;width:900px"></iframe>  
+<iframe src="figures/gsl_sal_ts.html" style="height:400px;width:900px" data-external="1"></iframe>  
 
 ## GSL Salinity Dashboard
-<iframe src="figures/gsldb.html" style="height:600px;width:900px"></iframe>
+<iframe src="figures/gsldb.html" style="height:600px;width:900px" data-external="1"></iframe>
 
 ## Utah's Lake Dashboard
 Interactively visualize lake profile & trophic indicator data.  
@@ -244,11 +243,107 @@ knitr::include_graphics('images/ecoli_monthly_plot.png')
 knitr::include_graphics('images/ecoli_ldc_plot.png')
 ```
 
+# Integrated Report
+<br>
+```{r, echo=F, fig.align="center", out.width='800px'}
+knitr::include_graphics('images/ir-process-outline-detail.PNG')
+```
+
+## Assembling data
+<h3>Water Quality Portal</h3>  
+```{r, eval=F}
+library(wqTools)
+downloadWQP(outfile_path='C:/Your/Folder/Path', 
+		    start_date="01/01/2018", end_date="12/31/2018", 
+			retrieve=c("narrowresult","sites","detquantlim","activity"))
+```
+
+<h3>Other datasets</h3>  
+* High frequency DO
+* Macroinvertebrates
+* Phytoplankton
+
+## Screening data
+* Table-based validation  
+* Tables are unique-d subsets of metadata  
+* Reviews accumulate cycle-to-cycle  
+* Functions to update & apply data validation tables  
+* Results in screened data with consistent nomenclature  
+ 
+ <br>
+ <br>
+
+## Screening data
+1. Labs & activity types
+2. Activity media
+3. Parameter names & fractions
+4. Detection conditions
+5. Detection limit types
+6. Unit conversion factors
+7. Apply screening tables and subset to accepted data  
+ 
+## Screening data
+```{r, echo=F, fig.align="center", out.width='800px'}
+knitr::include_graphics('images/screen-table.PNG')
+```
+
+
+## Assigning criteria
+```{r, eval=F}
+assignCriteria(data, crit_wb, crit_sheetname, ss_sheetname,
+			   crit_startRow = 1, ss_startRow = 1, rm_nocrit = TRUE)
+```
+
+```{r, echo=F, fig.align="center", out.width='900px'}
+knitr::include_graphics('images/assign_crit.png')
+```
+
+## Formula derived criteria
+<h4>Hardness, temperature, & pH dependent criteria</h4>
+
+```{r, echo=F, fig.align="center", out.width='900px'}
+knitr::include_graphics('images/hc_crit_assign.png')
+```
+
+## Assessment methods as functions
+<h3>**Methods**</h3>  
+```{r, echo=F, fig.align="center", out.width='700px'}
+knitr::include_graphics('images/conventionals-fc.PNG')
+```
+<br>
+```{r, echo=F, fig.align="center", out.width='700px'}
+knitr::include_graphics('images/toxics-fc.PNG')
+```
+<br>
+```{r, echo=F, fig.align="center", out.width='700px'}
+knitr::include_graphics('images/lakes-tds-fc.PNG')
+```
+<br>
+
+<h3>**Functions**</h3>  
+*Count exceedances*  
+<iframe src="figures/count-exceedances.html" style="height:450px;width:800px" data-external="1"></iframe>
+<br>
+<br>
+*Assess counts*
+<iframe src="figures/assess-exc.html" style="height:450px;width:800px" data-external="1"></iframe>
+
+## Review tools
+Interactive tools for visualizing sites, data, and assessment results and providing reviewer feedback.
+<br><br>
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/site-val-app1.png')
+```
+<br>
+```{r, echo=F, fig.align="center"}
+knitr::include_graphics('images/asmntDashboard3.png')
+```
+
+
+
 # Questions
 <h3>jvander@utah.gov</h3>
-<h3>ehinman@utah.gov</h3>
-**Slides:** [bookdown.org/jakevl/udwq-open-source](https://bookdown.org/jakevl/utah-dwq-open-source/){target="_blank"}  
-**Source code:** [github.com/jakevl/utah-dwq-open-source](https://github.com/jakevl/utah-dwq-open-source){target="_blank"}
+<h4>[jakevl.github.io/utah-dwq-rtools-presentation](https://jakevl.github.io/utah-dwq-rtools-presentation/){target="_blank"}</h4>
 
 ```{r, echo=F, fig.align="center"}
 knitr::include_graphics('images/title-logo.PNG')

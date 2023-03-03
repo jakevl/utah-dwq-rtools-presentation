@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Perform assessments based on sample &amp; exceedance counts...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for assessExcCounts {irTools}"><tr><td>assessExcCounts {irTools}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Perform assessments based on sample &amp; exceedance counts (conventional &amp; toxic assessments)</h2>
+
+<h3>Description</h3>
+
+<p>Performs site level (site-parameter-use-criterion specific) water quality assessments based on sample &amp; exceedance counts by applying IR method flowcharts with user specified inputs.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+assessExcCounts(data, min_n, max_exc_count = NA, max_exc_pct = NA,
+  max_exc_count_id = NA, max_exc_pct_id = NA, id_cols = c())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>Site-use-parameter-criterion specific sample and  exceedance counts(i.e. output from countExceedances() )</p>
+</td></tr>
+<tr valign="top"><td><code>min_n</code></td>
+<td>
+<p>Minimum sample size for sufficient data assessment (sample counts &gt;= min_n are considered sufficient)</p>
+</td></tr>
+<tr valign="top"><td><code>max_exc_count</code></td>
+<td>
+<p>Maximum allowable exceedance count for full support (exceedance counts &gt; max_exc_count are considered not supporting) - one of max_exc_count or max_exc_pct must be specified</p>
+</td></tr>
+<tr valign="top"><td><code>max_exc_pct</code></td>
+<td>
+<p>Maximum allowable exceedance percentage for full support (exceedance pcts &gt; max_exc_pct are considered not supporting - one of max_exc_count or max_exc_pct must be specified</p>
+</td></tr>
+<tr valign="top"><td><code>max_exc_count_id</code></td>
+<td>
+<p>Maximum allowable exceedance count for insufficient data with exceedances (for sites/parameters with insufficient data, exceedance counts &gt; max_exc_count_id are considered insufficient data with exceedances) - one of max_exc_count_id or max_exc_pct_id must be specified</p>
+</td></tr>
+<tr valign="top"><td><code>max_exc_pct_id</code></td>
+<td>
+<p>Maximum allowable exceedance percentage for insufficient data with exceedances (for sites/parameters with insufficient data, exceedance pcts &gt; max_exc_count_id are considered insufficient data with exceedances) - one of max_exc_count_id or max_exc_pct_id must be specified</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>When percentage arguments are supplied, specified percentages are used to calculate the maximum allowable number of whole samples exceeding a standard for that site/parameter to be considered supporting. Note that the min_n argument is &gt;= and all other arguments are &gt;.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns input data frame with site-use-parameter-criterion specific assessment categories appended.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>irTools</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div>
+</body></html>
