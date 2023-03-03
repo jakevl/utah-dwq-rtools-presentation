@@ -5,13 +5,10 @@ output:
     background_transition: none
 ---
 
-# Open source tools at Utah DWQ
+# R tools at Utah DWQ
 <h5>Jake Vander Laan (jvander@utah.gov)</h5>  
-<h5>Elise Hinman (ehinman@utah.gov)</h5>  
 
 ```{r, echo=F, fig.align="center"}
-#setwd("C:\\Users\\jvander\\Documents\\R\\utah-dwq-open-source")
-#render("utah-dwq-open-source.Rmd")
 knitr::include_graphics('images/title-logo.PNG')
 library(wqTools)
 ```
@@ -20,10 +17,7 @@ library(wqTools)
 
 <br>
 
-# What is open source?
-Source code made publicly available for use and modification.  
-
-# Why use open source?
+# Why use open source, code-based workflows?
 
 - Transparency
 - Repeatability
@@ -31,12 +25,13 @@ Source code made publicly available for use and modification.
 - Flexibility
 - Ownership
 
-# What do we use open source tools for?
+# What do we these tools for?
 
 - Querying/downloading data  
 - Water quality assessments
 - Data visualization
 - Documenting & communicating analyses
+- Wasteload analysis (in development)
 
 # Our general approach
 
@@ -44,10 +39,10 @@ Source code made publicly available for use and modification.
 2. Use ***<span style="color:#2e6da4">arguments</span>*** to modify functions, instead of re-programming
 3. Link ***<span style="color:#2e6da4">functions in series</span>*** to perform analyses
 4. ***<span style="color:#2e6da4">Document</span>*** functions and analyses
-5. Use ***<span style="color:#2e6da4">interactive</span>*** figures and applications to enhance user understanding
+5. Use ***<span style="color:#2e6da4">interactive</span>*** tools, figures, and applications to enhance efficiency and user understanding
 
 
-# What platforms do we use?
+# What tools do we use?
 
 ## R
 R is an open source statistical program and coding language.  
@@ -89,7 +84,7 @@ Text formatting syntax that allows conversion of plain text to rich text HTML, P
 - Dashboards
 - Websites 
 
-## Markdown - Bookdown
+## R Markdown - Bookdown
 Compile documents into books. Document complex processes & user build guides.   
 
 **Example:** [Utah IR R tools user guide](https://bookdown.org/jakevl/IR-R-tools-guide/){target="_blank"}
@@ -190,6 +185,7 @@ knitr::include_app("https://jakevl.shinyapps.io/shiny-example", height="400px")
 <iframe src="https://bookdown.org/jakevl/ul_data_query/" style="height:500px;width:1000px"></iframe>  
 [Full page](https://bookdown.org/jakevl/ul_data_query/){target="_blank"}
 
+## Integrated Report
 
 ## Salinity in Great Salt Lake
 An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jakevl/gsl-sac1-figs/){target="_blank"} in response to changes to in hydrologic connectivity through a railroad causeway that bisects the lake.
@@ -198,7 +194,6 @@ An [analysis of changes in salinity in Great Salt Lake](https://bookdown.org/jak
 ## GSL Salinity Dashboard
 <iframe src="figures/gsldb.html" style="height:600px;width:900px"></iframe>
 
-
 ## Utah's Lake Dashboard
 Interactively visualize lake profile & trophic indicator data.  
 [View on the DWQ Shiny apps server](https://udwq.shinyapps.io/lakedashboard/){target="_blank"}
@@ -206,16 +201,6 @@ Interactively visualize lake profile & trophic indicator data.
 knitr::include_graphics('images/lake-profs.png')
 ```
 [Source code](https://github.com/utah-dwq/irTools/tree/master/inst/lakeDashboard){target="_blank"}
-
-## Utah Water Quality Data Viewer
-```{r, eval=F}
-wqTools::wqDD()
-```
-```{r, echo=F, fig.align="center", out.width='600px'}
-knitr::include_graphics('images/wqDD.png')
-```
-[Source code](https://github.com/utah-dwq/wqTools/tree/master/inst/wqDD){target="_blank"}
-
 
 ## Utah Lake Data Explorer
 Analyze and visualize water quality data in Utah Lake.
